@@ -28,9 +28,18 @@ public class Student {
     }
 
     // returns the list of grades
-    public ArrayList<Integer> getGrades(){...}
+    public ArrayList<Integer> getGrades(){
+        return grades;
+    }
 
     // returns the average of the students grades
-    public double getGradeAverage(){...}
+    public double getGradeAverage(){
+        double totalPoints = 0;
+        double numberOfGrades = grades.size();
+        for (Integer grade : grades){
+            totalPoints += grade;
+        }
+        return totalPoints/numberOfGrades;
+    }
 
 }
