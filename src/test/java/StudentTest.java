@@ -25,7 +25,6 @@ public class StudentTest {
         name.addGrade(90);
         assertEquals(1, name.getGrades().size());
         assertNotEquals(0, name.getGrades().size());
-
     }
 
     @Test
@@ -52,7 +51,12 @@ public class StudentTest {
 
     @Test
     public void testIfReturnsGradeAverage(){
-
+        Student name = new Student("Karla", 1L);
+        name.addGrade(90);
+        name.addGrade(90);
+        name.addGrade(90);
+        assertEquals(90, name.getGradeAverage(), 0);
+        assertEquals(3, name.getGrades().size());
     }
 
 
