@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class StudentTest {
-    private Student name;
 
     @Test
-    public void testIfNameIsInitialized(){
+    public void testIfStudentParametersAreInitialized(){
         Student name = new Student("Karla", 100L);
-        name.addGrade(90);
-
-        assertNotNull(name);
-
+        assertNotNull(name.getName());
+        assertEquals(name.getName(), "Karla");
+        assertEquals(name.getId(), 100L);
+        assertNotNull(name.getGrades());
+        assertEquals(name.getGrades(), new ArrayList<>());
     }
 
     @Test
@@ -29,8 +29,14 @@ public class StudentTest {
     @Test
     public void testIfGradeWasAddedToGrades(){
         Student name = new Student("Karla", 100L);
+
+        assertTrue(name.getGrades().isEmpty());
+
         name.addGrade(90);
-        assertArrayEquals([90]  , name.getGrades());
+        assertEquals(1, name.getGrades().size());
+
+        name.addGrade(88);
+        assertEquals(2, name.getGrades().size());
     }
 
 
