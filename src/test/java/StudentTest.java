@@ -1,41 +1,88 @@
+
+import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class StudentTest {
-    @Test
-    public void testCreateStudent(){
-        Student fer = new Student(1L, "fer");
-        Student ryan = null;
-        assertNull(ryan);
-        assertNotNull(fer);
+
+    @Before
+    public void setUp(){
+        Student name = new Student("Karla", 100L);
+
+        Student nameWithOneGrade = new Student("Renee", 101L);
+        nameWithOneGrade.addGrade(88);
+
+        Student nameWithManyGrades = new Student("Julian", 102L);
+        nameWithManyGrades.addGrade(90);
+        nameWithManyGrades.addGrade(100);
+        nameWithManyGrades.addGrade(88);
+        nameWithManyGrades.addGrade(79);
+        nameWithManyGrades.addGrade(91);
+        nameWithManyGrades.addGrade(76);
+        nameWithManyGrades.addGrade(20);
+        nameWithManyGrades.addGrade(60);
+        nameWithManyGrades.addGrade(82);
     }
 
     @Test
-    public void testStudentFields(){
-        Student fer = new Student(1L, "fer");
-        assertSame(1L, fer.getId());
-        assertSame("fer", fer.getName());
-        assertSame(0, fer.getGrades().size());
-    }
+    public void testIfStudentParametersAreInitialized(){
 
+        Student name = new Student("Karla", 100L);
+        assertNotNull(name.getName());
+        assertNotNull(name.getGrades());
 
-    @Test
-    public void testAddGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        assertSame(100, fer.getGrades().get(0));
-        fer.addGrade(80);
-        assertSame(80, fer.getGrades().get(1));
+        assertEquals(name.getName(), "Karla");
+        assertEquals(name.getId(), 100L);
+        assertEquals(name.getGrades(), new ArrayList<>());
     }
 
     @Test
-    public void testAverageGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        fer.addGrade(80);
-        assertEquals(90, fer.getGradeAverage(), 0);
+    public void testIfGradeWasAddedToGrades(){
+        Student name = new Student("Karla", 100L);
+
+        name.addGrade(90);
+        assertEquals(1, name.getGrades().size());
+        assertNotEquals(0, name.getGrades().size());
     }
+
+    @Test
+    public void testIfCorrectNameAndIdIsReturned(){
+        Student name = new Student("Karla", 1L);
+        assertEquals(name.getName(), "Karla");
+        assertNotEquals("Carla", name.getName());
+        assertEquals(name.getId(), 1L);
+        assertNotEquals(1F, name.getId());
+    }
+
+    @Test
+    public void testIfReturnsListOfGrades(){
+        ArrayList<Integer> expected = new ArrayList<>();
+
+        Student name = new Student("Karla", 1L);
+        assertTrue(name.getGrades().isEmpty());
+
+        expected.add(90);
+        name.addGrade(90);
+        assertEquals(expected, name.getGrades());
+    }
+
+    @Test
+    public void testIfReturnsGradeAverage(){
+        Student name = new Student("Karla", 1L);
+        assertEquals(0, name.getGrades().size());
+        name.addGrade(90);
+        name.addGrade(90);
+        name.addGrade(90);
+        assertEquals(90, name.getGradeAverage(), 0);
+        assertEquals(3, name.getGrades().size());
+
+    }
+
+
+
+
+
+
 }
+
