@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Student {
-    //The Student class should have a constructor that sets both the name and id property, it initializes the grades property as an empty ArrayList.
+  //The Student class should have a constructor that sets both the name and id property, it initializes the grades property as an empty ArrayList.
     private String name;
     private long id;
     private ArrayList<Integer> grades;
@@ -41,5 +41,4 @@ public class Student {
         }
         return totalPoints/numberOfGrades;
     }
-
 }
