@@ -3,6 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CohortTest {
+
     Cohort secondCohort;
     Student karla;
     Student john;
@@ -29,7 +30,7 @@ public class CohortTest {
     }
 
     @Test
-    public void testThatTheAverageIsCorrect(){
+    public void testThatTheAverageIsCorrect() {
         karla.addGrade(90);
         karla.addGrade(80);
         karla.addGrade(70);
@@ -39,6 +40,5 @@ public class CohortTest {
         assertEquals(70, karla.getGradeAverage(), 0);
         assertEquals(70, karla.getGrades().get(2), 0);
     }
-
 
 }
